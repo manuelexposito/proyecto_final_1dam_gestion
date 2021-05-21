@@ -1,7 +1,6 @@
 package com.salesianas.dam.mesasroleras.controllers;
 
 import java.time.LocalDate;
-import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +38,7 @@ public class MemberController {
 		
 		
 		model.addAttribute("membersList", memberservice.filterByPremiumMembers());
+		
 		model.addAttribute("member", new Member());
 		
 		
@@ -57,7 +57,8 @@ public class MemberController {
 		return "memberDetails";
 		
 	}
-
+	
+	
 	
 	@PostMapping("/submit")
 	public String save(@ModelAttribute("member") Member m, Model model) {

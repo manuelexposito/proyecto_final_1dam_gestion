@@ -6,13 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--BOOTSTRAP-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <!--STYLES CSS-->
     <link rel="stylesheet" type="text/css" href="../static/css/styles.css" th:href="@{/css/styles.css}">
 
     <!--ICONOS-->
     <script src="https://kit.fontawesome.com/20f0371817.js" crossorigin="anonymous"></script>
 
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="../static/img/dice-d20-solid.svg" th:href="@{/img/dice-d20-solid.svg}">
 
     <!--JQUERY-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -24,20 +27,33 @@
     <div class="container-fluid overflow-hidden">
         <div class="row vh-100 overflow-auto">
             <div class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 brand_color d-flex sticky-top">
-                <div class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2 text-white">
-                    <a href="/" class="d-flex align-items-center pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <div
+                    class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2 text-white">
+                    <a href="/"
+                        class="d-flex align-items-center pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none">
                         <span class="text-white d-flex align-items-center"> <i id="logo" class="fas fa-dice-d20 "></i>
                             <span class="d-none d-sm-inline">
-                                <h3 class="mx-2 ">Mesas roleras</h3>
+                                <h3 class="mx-2 modestoFont">Mesas roleras</h3>
                             </span>
                         </span>
                     </a>
-                    <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start" id="menu">
+                    <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 p-lg-4 justify-content-center align-items-center align-items-sm-start"
+                        id="menu">
                         <li>
-                            <a href="#" class="nav-link px-sm-0 px-2"> <i class="fas fa-users text-white"></i><span class="ms-1 d-none d-sm-inline text-white">Socios</span></a>
+                            <a href="#" th:href="@{/}" class="nav-link px-sm-0 px-2"> <i
+                                    class="fas fa-users text-white"></i><span
+                                    class="ms-1 d-none d-sm-inline text-white">Socios</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link px-sm-0 px-2"> <i class="fas fa-book text-white"></i><span class="ms-1 d-none d-sm-inline text-white">Productos</span>
+                            <a href="#" th:href="@{/products}" class="nav-link px-sm-0 px-2"> <i
+                                    class="fas fa-book text-white"></i><span
+                                    class="ms-1 d-none d-sm-inline text-white">Productos</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" th:href="@{/games}" class="nav-link px-sm-0 px-2"> <i
+                                    class="fas fa-dice text-white"></i><span
+                                    class="ms-1 d-none d-sm-inline text-white">Sesiones de juego</span>
                             </a>
                         </li>
 
@@ -61,34 +77,128 @@
                             </div>
                         </header>
                         <!--/HEADER-->
-                        
+
                         <!--DETALLES-->
-                     
-                        <div class="jumbotron w-50" >
-                            <div class="d-flex justify-content-between">
-                                <img src="http://placehold.it/350x260" th:src="${#strings.isEmpty(member.image)} ? 'http://placehold.it/350x260' : ${member.image}"
-										class="img-responsive" alt="profile-pic" />
-                                <h1 class="display-4"  th:text="${member.name} + ' ' + ${member.lastName}">Nombre y apellidos</h1>
+                        <div class="d-flex justify-content-center ">
+                            <div class="card m-5 no-border">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between ">
+                                        <img src="http://placehold.it/350x260"
+                                            th:src="${#strings.isEmpty(member.image)} ? 'http://placehold.it/350x260' : ${member.image}"
+                                            class="img-responsive" alt="profile-pic" />
+                                        <h1 class="d-flex align-items-end mx-3 modestoFont" th:text="${member.name} + ' ' + ${member.lastName}">Nombre y
+                                            apellidos</h1>
+                                    </div>
+                                    <hr>
+                                    <div>
+                                        <div class="lead">Edad: <span th:text="${member.getAge}"></span></div>
+                                        <div class="lead">DNI: <span th:text="${member.dni}"></span></div>
+                                        <div class="lead">Email: <span th:text="${member.email}"></span></div>
+                                        <div class="lead">Dirección: <span th:text="${member.address}"></span></div>
+                                        <div class="lead">Teléfono: <span th:text="${member.phone}"></span></div>
+                                        <div class="lead">Número de cuenta: <span th:text="${member.bankNum}"></span>
+                                        </div>
+                                        <div class="lead">Premium:<span th:if=" ${member.isPremium} == 'true'">
+                                                Sí</span>
+                                            <span th:unless=" ${member.isPremium} == 'true'">No</span>
+                                        </div>
+                                        <div class="lead">Fecha de subscripcion: <span
+                                                th:text="${member.subscription}"></span>
+                                        </div>
+                                        <div class="lead">Fecha de nacimiento <span
+                                                th:text="${member.birthdate}"></span></div>
+                                    </div>
+                                </div>
+
                             </div>
-                            <hr>
-                            <div class="lead" th:text="${member.name} + ' ' + ${member.lastName}">Nombre y apellidos</div>
-                            <div class="lead" >Edad: <span th:text="${member.getAge}"></span></div>
-                            <div class="lead" >DNI: <span th:text="${member.dni}"></span></div>
-                            <div class="lead" >Email: <span th:text="${member.email}"></span></div>
-                            <div class="lead" >Dirección: <span th:text="${member.address}"></span></div>
-                            <div class="lead" >Teléfono: <span th:text="${member.phone}"></span></div>
-                            <div class="lead" >Número de cuenta: <span th:text="${member.bankNum}"></span></div>
-                            <div class="lead" >Premium:<span th:if=" ${member.isPremium} == 'true'"> Sí</span>
-                            							<span th:unless=" ${member.isPremium} == 'true'">No</span> </div>
-                            <div class="lead" >Fecha de subscripcion: <span th:text="${member.subscription}"></span></div>
-                            <div class="lead" >Fecha de nacimiento <span th:text="${member.birthdate}"></span></div>
                         </div>
-                      
-                       
+
                     </div>
                 </main>
                 <footer class="row bg-dark text-white py-4 mt-auto">
-                    <div class="col"> Footer content here... </div>
+
+                    <div class="container d-lg-flex align-items-center  justify-content-between">
+
+                        <div class="row text-center ">
+                            <div class="col-12">
+                                <h3>Sobre nosotros</h3>
+                            </div>
+                            <div class="col-12">
+                                <a class="text-white" href="#">En qué destacamos</a>
+                            </div>
+                            <div class="col-12">
+                                <a class="text-white" href="#">Quiénes somos</a>
+                            </div>
+                            <div class="col-12">
+                                <a class="text-white" href="#">Dónde encontrarnos</a>
+                            </div>
+                            <div class="col-12">
+                                <a class="text-white" href="#">Trabaja con nosotros</a>
+                            </div>
+                            <div class="col-12">
+                                <a class="text-white" href="#">Aviso legal</a>
+                            </div>
+                        </div>
+                        <hr class="d-lg-none">
+                        <div class="row  ">
+                            <div class="col-12 ">
+                                <h3>Nuestros colaboradores</h3>
+
+                                <div class="row">
+                                    <div class="col-sm-12 col-lg-6">
+                                        <a href="https://company.wizards.com/es"><i
+                                                class="text-white collaboratorLogo fab fa-wizards-of-the-coast"></i></a>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6">
+                                        <a href="https://www.dndbeyond.com/"><i
+                                                class="text-white collaboratorLogo fab fa-d-and-d-beyond"></i></a>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6">
+                                        <a href="https://critrole.com/"><i
+                                                class="mb-3 text-white collaboratorLogo fab fa-critical-role"></i></a>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6">
+                                        <a href="https://www.fantasyflightgames.com/en/index/"><i
+                                                class="text-white collaboratorLogo fab fa-fantasy-flight-games"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr class="d-lg-none">
+                        <div class="row py-5 text-sm-center text-lg-left ">
+                            <div class="col-12 col-lg-4">
+                                <h3>Nuestra comunidad </h3>
+
+                                <div class="row">
+                                    <div class="col-sm-12 col-lg-6">
+                                        <a class="text-decoration-none" href="https://twitter.com/"><i
+                                                class="text-white collaboratorLogo fab fa-twitter"></i></a>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6">
+                                        <a class="text-decoration-none" href="https://github.com/"><i
+                                                class="text-white collaboratorLogo fab fa-github"></i></a>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6">
+                                        <a class="text-decoration-none" href="https://www.reddit.com/"><i
+                                                class="text-white collaboratorLogo fab fa-reddit"></i></a>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6">
+                                        <a class="text-decoration-none" href="https://www.instagram.com/"><i
+                                                class="text-white collaboratorLogo fab fa-instagram"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row text-sm-center text-lg-right">
+                        <div class="col-8 col-lg-12">
+                            <p>Web propiedad de Manuel Expósito Herrera. MESAS ROLERAS© CIF N8349727A Los
+                                Salesianos Triana (San Pedro), Calle Condes de Bustillo, nº17 41019 SEVILLA</p>
+
+                        </div>
+                    </div>
                 </footer>
             </div>
         </div>

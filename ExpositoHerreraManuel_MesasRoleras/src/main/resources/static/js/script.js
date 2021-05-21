@@ -48,6 +48,20 @@ document.getElementById("birthdate").setAttribute("max", today);
 
 
 
+// SAVING ARRAY
+
+let players = document.querySelectorAll(".playerInput")
+
+let playersArray = [];
+
+players.forEach(function (input) {
+  if(input.type === 'checkbox' && input.checked) {
+    playersArray.push(input.value);
+  }
+})
+
+
+
 //FUNCTION FOR SEARCHING
 const searchButton = document.getElementById('search-button');
 const searchInput = document.getElementById('search-input');
@@ -56,23 +70,3 @@ searchButton.addEventListener('click', () => {
     alert(inputValue);
 });
 
-/*
-window.onload = function(){
-	
-	let btn = document.querySelectorAll('.clickable-row')
-	
-	
-	
-	for(let b of btn){
-		
-		b.addEventListener("click", findId());
-	}
-	
-	function findId(){
-		
-		
-		event.currentTarget.cells[0];
-	}
-	
-}
-*/

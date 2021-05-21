@@ -5,15 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--BOOTSTRAP-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <!--STYLES CSS-->
     <link rel="stylesheet" type="text/css" href="../static/css/styles.css" th:href="@{/css/styles.css}">
 
     <!--ICONOS-->
     <script src="https://kit.fontawesome.com/20f0371817.js" crossorigin="anonymous"></script>
 
-    <!-- to temporally fix favicon exception -->
-    <link rel="shortcut icon" href="#">
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="../static/img/dice-d20-solid.svg" th:href="@{/img/dice-d20-solid.svg}">
 
     <!--JQUERY-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -25,25 +26,34 @@
     <div class="container-fluid overflow-hidden">
         <div class="row vh-100 overflow-auto">
             <div class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 brand_color d-flex sticky-top">
-                <div class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2 text-white">
-                    <a href="/" class="d-flex align-items-center pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                        <span class="text-white d-flex align-items-center"> 
+                <div
+                    class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2 text-white">
+                    <a href="/"
+                        class="d-flex align-items-center pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <span class="text-white d-flex align-items-center">
                             <i id="logo" class="fas fa-dice-d20 "></i>
                             <span class="d-none d-sm-inline">
                                 <h3 class="mx-2 modestoFont">Mesas roleras</h3>
                             </span>
                         </span>
                     </a>
-                    <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start" id="menu">
+                    <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 p-lg-4 justify-content-center align-items-center align-items-sm-start"
+                        id="menu">
                         <li>
-                            <a href="#" th:href="@{/}" class="nav-link px-sm-0 px-2"> <i class="fas fa-users text-white"></i><span class="ms-1 d-none d-sm-inline text-white">Socios</span></a>
+                            <a href="#" th:href="@{/}" class="nav-link px-sm-0 px-2"> <i
+                                    class="fas fa-users text-white"></i><span
+                                    class="ms-1 d-none d-sm-inline text-white">Socios</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" th:href="@{/products}" class="nav-link px-sm-0 px-2"> <i class="fas fa-book text-white"></i><span class="ms-1 d-none d-sm-inline text-white">Productos</span>
+                            <a href="#" th:href="@{/products}" class="nav-link px-sm-0 px-2"> <i
+                                    class="fas fa-book text-white"></i><span
+                                    class="ms-1 d-none d-sm-inline text-white">Productos</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" th:href="@{/games}" class="nav-link px-sm-0 px-2"> <i class="fas fa-dice text-white"></i></i><span class="ms-1 d-none d-sm-inline text-white">Sesiones de juego</span>
+                            <a href="#" th:href="@{/games}" class="nav-link px-sm-0 px-2"> <i
+                                    class="fas fa-dice text-white"></i><span
+                                    class="ms-1 d-none d-sm-inline text-white">Sesiones de juego</span>
                             </a>
                         </li>
 
@@ -67,49 +77,54 @@
                             </div>
                         </header>
                         <!--/HEADER-->
-                        <h1>Socios</h1>
+                        <h1 class="modestoFont">Socios</h1>
                         <div th:if="${#lists.isEmpty(membersList)}">
-                        	
-                        	<div class="text-center">
-                        	<h3>No hay miembros. <span class="clickable text-primary" data-bs-toggle="modal" data-bs-target="#formAddMember"> ¡Registra a alguien! </span></h3>
-                        	</div>
-                        	
+
+                            <div class="text-center">
+                                <h3>No hay miembros. <span class="clickable text-primary" data-bs-toggle="modal"
+                                        data-bs-target="#formAddMember"> ¡Registra a alguien! </span></h3>
+                            </div>
+
                         </div>
                         <div class="container infoTable overflow-auto" th:unless="${#lists.isEmpty(membersList)}">
-                        	<div class="row ">
-                        		<div  class="col-lg-6 col-sm-4 offset-lg-3 offset-sm-0">
+                            <div class="row ">
+                                <div class="col-lg-6 col-sm-4 offset-lg-3 offset-sm-0">
                                     <div class="input-group">
                                         <div class="form-outline">
-                                            <input id="search-input" type="search" placeholder="Search" class="form-control" />
+                                            <input id="search-input" type="search" placeholder="Search"
+                                                class="form-control" />
                                         </div>
                                         <button id="search-button" type="button" class="btn btn-primary">
                                             <i class="fas fa-search"></i>
                                         </button>
-                                        
-                                        
+
+
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn "  data-bs-toggle="modal" data-bs-target="#formAddMember">
+                                        <button type="button" class="btn " data-bs-toggle="modal"
+                                            data-bs-target="#formAddMember">
                                             <i class="fas fa-user-plus"></i> <span>Agregar nuevo socio</span>
                                         </button>
-                                       
+
                                         <div class="d-flex flex-column">
-                                        <div class="d-flex align-items-center">
-                                         <label for="filterByPremium"> Mostrar Premium </label>
-                                            <input type="radio" name="filterByPremium"  onchange="window.location.href = 'http://localhost:9000/premiumList'"  >
-                                         </div>
-                                        <div class="d-flex align-items-center">
-                                        <label for="filterByPremium"> Mostrar todos </label>
-                                           	<input type="radio" name="filterByPremium" onchange="window.location.href = 'http://localhost:9000/'" >
-                                           </div>
-                                          
+                                            <div class="d-flex align-items-center">
+                                                <label for="filterByPremium"> Mostrar Premium </label>
+                                                <input type="radio" name="filterByPremium"
+                                                    onchange="window.location.href = 'http://localhost:9000/premiumList'">
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <label for="filterByPremium"> Mostrar todos </label>
+                                                <input type="radio" name="filterByPremium"
+                                                    onchange="window.location.href = 'http://localhost:9000/'">
+                                            </div>
+
                                         </div>
                                     </div>
-                                    
-                        		
-                        		</div>
-                        	</div>
+
+
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-lg-6 col-sm-4 offset-lg-3 offset-sm-0">
 
@@ -126,12 +141,14 @@
                                                 <th colspan="2"></th>
                                             </tr>
                                         </thead>
-                                        <tbody class="table-info" th:each="member : ${membersList}" th:remove="all-but-first ">
+                                        <tbody class="table-info" th:each="member : ${membersList}"
+                                            th:remove="all-but-first ">
 
 
                                             <!-- <a th:href="@{/{id}(id=${member.id})}"> -->
                                             <!-- data-th-href="@{/{id}}" -->
-                                            <tr class="clickable clickable-row" th:onclick="'javascript:rowClicked(\'' + ${member.id} + '\')'"  >
+                                            <tr class="clickable clickable-row"
+                                                th:onclick="'javascript:rowClicked(\'' + ${member.id} + '\')'">
 
 
                                                 <td th:text="${member.id}">Null</td>
@@ -142,125 +159,229 @@
                                                 <td th:text="${member.email} ">Null</td>
                                                 <td th:text="${member.isPremium} ">false</td>
                                                 <td th:text="${member.getAge} ">Null</td>
-                                                <td><a th:href="@{/edit/{id}(id=${member.id})}" ><i class="fas fa-edit"></i></a></td>
+                                                <td><a th:href="@{/edit/{id}(id=${member.id})}"><i
+                                                            class="fas fa-edit"></i></a></td>
                                                 <td><a th:href="@{/delete/{id}(id=${member.id})}">
-                                                	<i class="fas fa-trash-alt"></i>
-                                                	</a>
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                       		
+
                         </div>
                     </div>
                 </main>
-               
-                
+
+
                 <!-- FORM - MODAL -->
-                    <div class="modal fade " id="formAddMember" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-xl">
-                            <div class="modal-content ">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel">Agregar nuevo socio</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal fade " id="formAddMember" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl">
+                        <div class="modal-content ">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Agregar nuevo socio</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+
+                            <form method="POST" th:action="@{/submit}" th:object="${member}" class="modal-body ">
+                                <div class="d-flex">
+                                    <!--FOTO-->
+                                    <div class="card-body bg-gray">
+                                        <div class="d-flex flex-column">
+                                            <input type="text" th:field="*{image}" class="formStyle"
+                                                placeholder="Introduzca su URL...">
+                                            <label for="image">Imagen</label>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <!--INFO-->
+                                    <div class="infoForm">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div>
+                                                <label for="name" class="form-label ">Nombre<span
+                                                        class="text-danger ">*</span></label>
+                                                <input type="text" th:field="*{name}" name="name" class="formStyle "
+                                                    id="name" maxlength="220 " size="20 " placeholder="Nombre "
+                                                    required>
+                                            </div>
+                                            <div>
+                                                <label for="lastName" class="form-label ">Apellidos<span
+                                                        class="text-danger ">*</span></label>
+                                                <input type="text" th:field="*{lastName}" name="lastName"
+                                                    class="formStyle " id="lastName" maxlength="220 " size="20 "
+                                                    placeholder="Los dos apellidos " required>
+                                            </div>
+                                            <div>
+                                                <label for="email" class="form-label ">Email<span
+                                                        class="text-danger ">*</span></label>
+                                                <input type="email" th:field="*{email}" class="formStyle " id="email"
+                                                    size="40 " required>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3 d-flex justify-content-between ">
+
+                                            <div class="d-flex flex-column">
+                                                <label for="dni" class="form-label ">DNI<span
+                                                        class="text-danger ">*</span></label>
+                                                <input type="text" th:field="*{dni}" class="formStyle " name="dni"
+                                                    id="dni" maxlength="9 " size="9 " required
+                                                    placeholder="Num y letra">
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <label for="address" class="form-label">Dirección<span
+                                                        class="text-danger ">*</span></label>
+                                                <input type="text" th:field="*{address}" name="address"
+                                                    class="formStyle" id="address" maxlength="220" size="40"
+                                                    placeholder="C/ Triana..." required>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <label for="phone" class="form-label">Teléfono</label>
+                                                <input type="text" th:field="*{phone}" name="phone" class="formStyle"
+                                                    id="phone" max="12" size="12" placeholder="+34...">
+                                            </div>
+
+                                        </div>
+
+                                        <div class="mt-3 d-flex justify-content-between ">
+                                            <div class="d-flex flex-column">
+                                                <label for="birthdate" class="form-label">Fecha de nacimiento<span
+                                                        class="text-danger ">*</span></label>
+                                                <input type="date" th:field="*{birthdate}" th:value="*{birthdate}"
+                                                    name="birthdate" class="formStyle" id="birthdate" size="10"
+                                                    required>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <label for="bankNum" class="form-label">Número de cuenta<span
+                                                        class="text-danger ">*</span></label>
+                                                <input type="text" th:field="*{bankNum}" name="bankNum"
+                                                    class="formStyle" id="bankNum" min='1990-01-01' maxlength="220"
+                                                    size="40" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-3">
+                                            <label for="isPremium" th:field="*{isPremium}" class="form-label">Miembro
+                                                Premium</label><br>
+                                            <input type="radio" value=true name="isPremium" id="premiumTrue">Sí<br>
+                                            <input type="radio" value=false name="isPremium" id="premiumFalse"
+                                                checked>No
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary">Agregar</button>
                                 </div>
 
-                                <form method="POST" th:action="@{/submit}" th:object="${member}" class="modal-body ">
-                                    <div class="d-flex">
-                                        <!--FOTO-->
-                                        <div class="card-body bg-gray">
-                                            <div class="d-flex flex-column">
-                                            <input type="text" th:field="*{image}" class="formStyle" placeholder="Introduzca su URL...">
-                                            <label for="image">Imagen</label>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <!--INFO-->
-                                        <div class="infoForm">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div>
-                                                    <label for="name" class="form-label ">Nombre<span
-                                                            class="text-danger ">*</span></label>
-                                                    <input type="text" th:field="*{name}" name="name" class="formStyle " id="name" maxlength="220 " size="20 " placeholder="Nombre " required>
-                                                </div>
-                                                <div>
-                                                    <label for="lastName" class="form-label ">Apellidos<span
-                                                            class="text-danger ">*</span></label>
-                                                    <input type="text" th:field="*{lastName}" name="lastName" class="formStyle " id="lastName" maxlength="220 " size="20 " placeholder="Los dos apellidos " required>
-                                                </div>
-                                                <div>
-                                                    <label for="email" class="form-label ">Email<span
-                                                            class="text-danger ">*</span></label>
-                                                    <input type="email" th:field="*{email}" class="formStyle " id="email" size="40 " required>
-                                                </div>
-                                            </div>
-                                            <div class="mt-3 d-flex justify-content-between ">
+                            </form>
 
-                                                <div class="d-flex flex-column">
-                                                    <label for="dni" class="form-label ">DNI<span
-                                                            class="text-danger ">*</span></label>
-                                                    <input type="text" th:field="*{dni}" class="formStyle " name="dni" id="dni" maxlength="9 " size="9 " required placeholder="Num y letra">
-                                                </div>
-                                                <div class="d-flex flex-column">
-                                                    <label for="address" class="form-label">Dirección<span
-                                                            class="text-danger ">*</span></label>
-                                                    <input type="text" th:field="*{address}" name="address" class="formStyle" id="address" maxlength="220" size="40" placeholder="C/ Triana..." required>
-                                                </div>
-                                                <div class="d-flex flex-column">
-                                                    <label for="phone" class="form-label">Teléfono</label>
-                                                    <input type="text" th:field="*{phone}" name="phone" class="formStyle" id="phone" max="12" size="12" placeholder="+34...">
-                                                </div>
-
-                                            </div>
-
-                                            <div class="mt-3 d-flex justify-content-between ">
-                                                <div class="d-flex flex-column">
-                                                    <label for="birthdate" class="form-label">Fecha de nacimiento<span
-                                                            class="text-danger ">*</span></label>
-                                                    <input type="date" th:field="*{birthdate}" th:value="*{birthdate}" name="birthdate" class="formStyle" id="birthdate" size="10" required>
-                                                </div>
-                                                <div class="d-flex flex-column">
-                                                    <label for="bankNum" class="form-label">Número de cuenta<span
-                                                            class="text-danger ">*</span></label>
-                                                    <input type="text" th:field="*{bankNum}" name="bankNum" class="formStyle" id="bankNum" min='1990-01-01' maxlength="220" size="40" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="mt-3">
-                                                <label for="isPremium" th:field="*{isPremium}" class="form-label">Miembro Premium</label><br>
-                                                <input type="radio" value=true name="isPremium" id="premiumTrue">Sí<br>
-                                                <input type="radio" value=false name="isPremium" id="premiumFalse" checked>No
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary">Agregar</button>
-                                    </div>
-
-                                </form>
-                                
-                            </div>
-					
                         </div>
-                
-               
+
+                    </div>
+
+
+                </div>
+                <footer class="row bg-dark text-white py-4 mt-auto">
+
+                    <div class="container d-lg-flex align-items-center  justify-content-between">
+
+                        <div class="row text-center ">
+                            <div class="col-12">
+                                <h3>Sobre nosotros</h3>
+                            </div>
+                            <div class="col-12">
+                                <a class="text-white" href="#">En qué destacamos</a>
+                            </div>
+                            <div class="col-12">
+                                <a class="text-white" href="#">Quiénes somos</a>
+                            </div>
+                            <div class="col-12">
+                                <a class="text-white" href="#">Dónde encontrarnos</a>
+                            </div>
+                            <div class="col-12">
+                                <a class="text-white" href="#">Trabaja con nosotros</a>
+                            </div>
+                            <div class="col-12">
+                                <a class="text-white" href="#">Aviso legal</a>
+                            </div>
+                        </div>
+                        <hr class="d-lg-none">
+                        <div class="row  ">
+                            <div class="col-12 ">
+                                <h3>Nuestros colaboradores</h3>
+
+                                <div class="row">
+                                    <div class="col-sm-12 col-lg-6">
+                                        <a href="https://company.wizards.com/es"><i
+                                                class="text-white collaboratorLogo fab fa-wizards-of-the-coast"></i></a>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6">
+                                        <a href="https://www.dndbeyond.com/"><i
+                                                class="text-white collaboratorLogo fab fa-d-and-d-beyond"></i></a>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6">
+                                        <a href="https://critrole.com/"><i
+                                                class="mb-3 text-white collaboratorLogo fab fa-critical-role"></i></a>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6">
+                                        <a href="https://www.fantasyflightgames.com/en/index/"><i
+                                                class="text-white collaboratorLogo fab fa-fantasy-flight-games"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr class="d-lg-none">
+                        <div class="row py-5 text-sm-center text-lg-left ">
+                            <div class="col-12 col-lg-4">
+                                <h3>Nuestra comunidad </h3>
+
+                                <div class="row">
+                                    <div class="col-sm-12 col-lg-6">
+                                        <a class="text-decoration-none" href="https://twitter.com/"><i
+                                                class="text-white collaboratorLogo fab fa-twitter"></i></a>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6">
+                                        <a class="text-decoration-none" href="https://github.com/"><i
+                                                class="text-white collaboratorLogo fab fa-github"></i></a>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6">
+                                        <a class="text-decoration-none" href="https://www.reddit.com/"><i
+                                                class="text-white collaboratorLogo fab fa-reddit"></i></a>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6">
+                                        <a class="text-decoration-none"
+                                            href="https://www.instagram.com/"><i
+                                                class="text-white collaboratorLogo fab fa-instagram"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row text-sm-center text-lg-right">
+                        <div class="col-8 col-lg-12">
+                            <p>Web propiedad de Manuel Expósito Herrera. MESAS ROLERAS© CIF N8349727A Los
+                                Salesianos Triana (San Pedro), Calle Condes de Bustillo, nº17 41019 SEVILLA</p>
+
+                        </div>
+                    </div>
+                </footer>
             </div>
-            <footer class="row bg-dark text-white py-4 mt-auto">
-                <div class="col"> Footer content here... </div>
-        </footer>
-        	</div>
-           
-        	</div>
-        	
+
+        </div>
+
     </div>
-     <!--JAVASCRIPT-->
-        <script type="text/javascript" src="../static/js/script.js" th:src="@{/js/script.js}"></script>
-        
-        <!--BOOTSTRAP JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js " integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4 " crossorigin="anonymous "></script>
-    
+    <!--JAVASCRIPT-->
+    <script type="text/javascript" src="../static/js/script.js" th:src="@{/js/script.js}"></script>
+
+    <!--BOOTSTRAP JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js "
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4 "
+        crossorigin="anonymous "></script>
+
 </body>
 
 </html>

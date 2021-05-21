@@ -3,6 +3,7 @@ package com.salesianas.dam.mesasroleras.model;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -27,6 +28,8 @@ public class Member {
 	private String name, lastName, dni, email, address, phone, bankNum;
 	private String image;
 	private String isPremium;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate subscription;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate birthdate;

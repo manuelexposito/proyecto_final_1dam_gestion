@@ -13,6 +13,8 @@
     <!--ICONOS-->
     <script src="https://kit.fontawesome.com/20f0371817.js" crossorigin="anonymous"></script>
 
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="../static/img/dice-d20-solid.svg" th:href="@{/img/dice-d20-solid.svg}">
 
     <!--JQUERY-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -28,21 +30,32 @@
                     <a href="/" class="d-flex align-items-center pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none">
                         <span class="text-white d-flex align-items-center"> <i id="logo" class="fas fa-dice-d20 "></i>
                             <span class="d-none d-sm-inline">
-                                <h3 class="mx-2 ">Mesas roleras</h3>
+                                <h3 class="mx-2 modestoFont">Mesas roleras</h3>
                             </span>
                         </span>
                     </a>
-                    <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start" id="menu">
-                        <li>
-                            <a href="#" class="nav-link px-sm-0 px-2"> <i class="fas fa-users text-white"></i><span class="ms-1 d-none d-sm-inline text-white">Socios</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link px-sm-0 px-2"> <i class="fas fa-book text-white"></i><span class="ms-1 d-none d-sm-inline text-white">Productos</span>
-                            </a>
-                        </li>
+                    <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 p-lg-4 justify-content-center align-items-center align-items-sm-start"
+                    id="menu">
+                    <li>
+                        <a href="#" th:href="@{/}" class="nav-link px-sm-0 px-2"> <i
+                                class="fas fa-users text-white"></i><span
+                                class="ms-1 d-none d-sm-inline text-white">Socios</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" th:href="@{/products}" class="nav-link px-sm-0 px-2"> <i
+                                class="fas fa-book text-white"></i><span
+                                class="ms-1 d-none d-sm-inline text-white">Productos</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" th:href="@{/games}" class="nav-link px-sm-0 px-2"> <i
+                                class="fas fa-dice text-white"></i><span
+                                class="ms-1 d-none d-sm-inline text-white">Sesiones de juego</span>
+                        </a>
+                    </li>
 
 
-                    </ul>
+                </ul>
                 </div>
             </div>
             <div class="col d-flex flex-column h-sm-100">
@@ -119,7 +132,90 @@
                     </div>
                 </main>
                 <footer class="row bg-dark text-white py-4 mt-auto">
-                    <div class="col"> Footer content here... </div>
+
+                    <div class="container d-lg-flex align-items-center  justify-content-between">
+
+                        <div class="row text-center ">
+                            <div class="col-12">
+                                <h3>Sobre nosotros</h3>
+                            </div>
+                            <div class="col-12">
+                                <a class="text-white" href="#">En qué destacamos</a>
+                            </div>
+                            <div class="col-12">
+                                <a class="text-white" href="#">Quiénes somos</a>
+                            </div>
+                            <div class="col-12">
+                                <a class="text-white" href="#">Dónde encontrarnos</a>
+                            </div>
+                            <div class="col-12">
+                                <a class="text-white" href="#">Trabaja con nosotros</a>
+                            </div>
+                            <div class="col-12">
+                                <a class="text-white" href="#">Aviso legal</a>
+                            </div>
+                        </div>
+                        <hr class="d-lg-none">
+                        <div class="row  ">
+                            <div class="col-12 ">
+                                <h3>Nuestros colaboradores</h3>
+
+                                <div class="row">
+                                    <div class="col-sm-12 col-lg-6">
+                                        <a href="https://company.wizards.com/es"><i
+                                                class="text-white collaboratorLogo fab fa-wizards-of-the-coast"></i></a>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6">
+                                        <a href="https://www.dndbeyond.com/"><i
+                                                class="text-white collaboratorLogo fab fa-d-and-d-beyond"></i></a>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6">
+                                        <a href="https://critrole.com/"><i
+                                                class="mb-3 text-white collaboratorLogo fab fa-critical-role"></i></a>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6">
+                                        <a href="https://www.fantasyflightgames.com/en/index/"><i
+                                                class="text-white collaboratorLogo fab fa-fantasy-flight-games"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr class="d-lg-none">
+                        <div class="row py-5 text-sm-center text-lg-left ">
+                            <div class="col-12 col-lg-4">
+                                <h3>Nuestra comunidad </h3>
+
+                                <div class="row">
+                                    <div class="col-sm-12 col-lg-6">
+                                        <a class="text-decoration-none" href="https://twitter.com/"><i
+                                                class="text-white collaboratorLogo fab fa-twitter"></i></a>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6">
+                                        <a class="text-decoration-none" href="https://github.com/"><i
+                                                class="text-white collaboratorLogo fab fa-github"></i></a>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6">
+                                        <a class="text-decoration-none" href="https://www.reddit.com/"><i
+                                                class="text-white collaboratorLogo fab fa-reddit"></i></a>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6">
+                                        <a class="text-decoration-none"
+                                            href="https://www.instagram.com/"><i
+                                                class="text-white collaboratorLogo fab fa-instagram"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row text-sm-center text-lg-right">
+                        <div class="col-8 col-lg-12">
+                            <p>Web propiedad de Manuel Expósito Herrera. MESAS ROLERAS© CIF N8349727A Los
+                                Salesianos Triana (San Pedro), Calle Condes de Bustillo, nº17 41019 SEVILLA</p>
+
+                        </div>
+                    </div>
                 </footer>
             </div>
         </div>
