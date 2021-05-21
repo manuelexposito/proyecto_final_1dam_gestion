@@ -1,0 +1,33 @@
+  <table class="table table-hover ">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Apellidos</th>
+                                    <th>DNI</th>
+                                    <th>Email</th>
+                                    <th>Dirección</th>
+                                    <th>Teléfono</th>
+                                    <th>IBAN</th>
+                                    <th>Premium</th>
+                                    <th>Fecha inscripción</th>
+                                    <th>Fecha nacimiento</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-info " th:remove="all-but-first ">
+                                <tr th:each="member : ${membersList} ">
+                                    <td th:text="${member.id} ">Null</td>
+                                    <td th:text="${member.name} ">Null</td>
+                                    <td th:text="${member.lastName} ">Null</td>
+                                    <td th:text="${member.dni} ">Null</td>
+                                    <td th:text="${member.email} ">Null</td>
+                                    <td th:text="${member.address} ">Null</td>
+                                    <td th:text="${member.phone} ">Null</td>
+                                    <td th:text="${member.bankNum} ">Null</td>
+                                    <td th:text="${member.isPremium} ">false</td>
+                                    <td th:text="${member.subscription} ">Null</td>
+                                    <td th:text="${member.birthdate} ">Null</td>
+                                </tr>
+
+                            </tbody>
+                        </table>

@@ -1,0 +1,64 @@
+@import url(../css/fonts.css);
+.clickable {
+    cursor: pointer;
+}
+
+
+/* ** COLORES ** */
+
+.brand_color {
+    background-color: rgb(64, 32, 122);
+}
+
+
+/*//fin colores*/
+
+.modestoFont {
+    font-family: "Modesto";
+}
+
+#logo {
+    font-size: 1.8em;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+.infoTable {
+    height: 660px;
+}
+
+
+/*sticky thead*/
+
+thead tr:first-child th {
+    position: sticky;
+    background-color: white;
+    top: 0;
+}
+
+a:hover {
+    color: inherit;
+    text-shadow: 0px 0px 6px rgba(255, 235, 146, 0.555);
+}
+
+.details {
+    left: 1100px;
+    top: 80px;
+    width: 580px;
+}
+
+.details-color {
+    background: rgb(133, 247, 255);
+}
+
+.formStyle {
+    border: none;
+    border-bottom: 1px solid gray;
+}
+
+.infoForm {
+    width: 70%
+}
