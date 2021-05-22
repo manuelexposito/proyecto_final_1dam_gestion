@@ -3,18 +3,25 @@ package com.salesianas.dam.mesasroleras.model;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+/**
+ * 
+ * <h1>Member</h2>
+ *This class represents the registered members of Mesas Roleras. 
+ * 
+ * @author Manuel Exposito Herrera
+ *
+ *@version 1.0
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -33,9 +40,7 @@ public class Member {
 	private LocalDate subscription;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate birthdate;
-	
-	@ManyToOne
-	private Game game;
+
 	
 
 	public Member(String name, String lastName, String dni, String email, String address, String phone, String bankNum,
@@ -55,24 +60,12 @@ public class Member {
 	}
 
 
-	public Member(String name, String lastName, String dni, String email, String address, String phone, String bankNum,
-			String image, String isPremium, LocalDate subscription, LocalDate birthdate, Game game) {
-		super();
-		this.name = name;
-		this.lastName = lastName;
-		this.dni = dni;
-		this.email = email;
-		this.address = address;
-		this.phone = phone;
-		this.bankNum = bankNum;
-		this.image = image;
-		this.isPremium = isPremium;
-		this.subscription = subscription;
-		this.birthdate = birthdate;
-		this.game = game;
-	}
 
-
+	/**
+	 * This method will return the member's age.
+	 * 
+	 * @return member's age
+	 */
 	public long getAge() {
 		return ChronoUnit.YEARS.between(this.birthdate, LocalDate.now() );
 	}

@@ -80,8 +80,20 @@
                         <h1 class="modestoFont">Sesiones</h1>
 
                         <!-- TABLA SESIONES-->
-                        <div class="container infoTable overflow-auto">
-                            <div class="row ">
+                        <div th:if="${#lists.isEmpty(gameSessions)}">
+
+                            <div class="text-center">
+                                <h3>
+                                    No hay sesiones pendientes. <span class="clickable text-primary"
+                                        data-bs-toggle="modal" data-bs-target="#formAddGame">
+                                        ¡Agrega alguna! </span>
+                                </h3>
+                            </div>
+
+                        </div>
+                        <!-- SECTION -->
+                        <div th:unless="${#lists.isEmpty(gameSessions)}">
+                            <div>
                                 <div class="col-lg-6 col-sm-4 offset-lg-3 offset-sm-0">
                                     <div class="input-group">
                                         <div class="form-outline">
@@ -106,79 +118,96 @@
 
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="container infoTable overflow-auto" >
 
-                                <div th:each="game : ${gameSessions}" class="col-lg-3 col-sm-12">
-                                    <a class="text-decoration-none" href="gamesDetails.html" th:href="@{/games/{id}(id=${game.id})}">
-                                    <div class="card" style="width: 14rem;">
-                                        <div class="card-body">
-                                            
-                                                <h5 class="text-dark" th:text="${'Día: '+#temporals.day(game.date) + '/' + #temporals.month(game.date) + '/'+ #temporals.year(game.date) }">Fecha</h5>
-                                                <h4 class="text-dark" th:text="${'Hora: '+#temporals.hour(game.date)+':'+#temporals.minute(game.date)}">Hora</h4>
-                                            	<a th:href="@{/games/delete/{id}(id=${game.id})}"><button
-														type="button" class="btn btn-danger">
-														<i class="fas fa-trash-alt"></i></button></a> 
-                                        </div>
+                                <div class="row">
+
+                                    <div th:each="game : ${gameSessions}" class="col-lg-3 col-sm-12">
+                                        <a class="text-decoration-none" href="gamesDetails.html"
+                                            th:href="@{/games/{id}(id=${game.id})}">
+                                            <div class="card" style="width: 14rem;">
+                                                <div class="card-body">
+
+                                                    <h5 class="text-dark" th:text="${'Día: '+ game.date }">Fecha</h5>
+                                                    <h4 class="text-dark" th:text="${'Hora: '+ game.time}">Hora</h4>
+                                                    <a th:href="@{/games/delete/{id}(id=${game.id})}"><button
+                                                            type="button" class="btn btn-danger">
+                                                            <i class="fas fa-trash-alt"></i></button></a>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                    </a>
+                                   
+
                                 </div>
-                               
+
                             </div>
-
                         </div>
-
+                        <!-- /SECTION -->
                     </div>
                 </main>
 
 
                 <!-- FORM - MODAL -->
-				<div class="modal fade " id="formAddGame" tabindex="-1"
-					aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered modal-xl">
-						<div class="modal-content ">
-							<div class="modal-header">
-								<h5 class="modal-title" id="staticBackdropLabel">Agregar
-									nueva sesión</h5>
-								<button type="button" class="btn-close" data-bs-dismiss="modal"
-									aria-label="Close"></button>
-							</div>
+                <div class="modal fade " id="formAddGame" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl">
+                        <div class="modal-content ">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Agregar
+                                    nueva sesión</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
 
-							<form method="POST" th:action="@{/games/submit}"
-								th:object="${game}" class="modal-body ">
-								<div class="d-flex justify-content-between">
-									<!-- JUEGO -->
-									<div class="d-flex flex-column">
-										<label>Juego:</label>
-										<select th:field="*{product}" id="product">
-	                      				 	<option  th:each="product : ${productsList}" th:value="${product.id}" th:text="${product.name}">Juego</option> 
-	                    				</select>   
-									</div>
-									<!-- JUGADORES -->
-									<div class="overflow-auto">
-									<label >Jugadores: </label>
-										<div th:each="member : ${membersList}">
-										<input th:field="*{players}" type="checkbox"  class="playerInput" th:value="${member.id}" th:text="${member.name + ' '+ member.lastName}">
-										</div>
-									</div>
-									<!-- FECHA -->
+                            <form method="POST" th:action="@{/games/submit}" th:object="${game}" class="modal-body ">
+                                <div class="d-flex justify-content-between">
+                                    <!-- JUEGO -->
+                                    <div class="d-flex flex-column">
+                                        <label>Juego:</label>
+                                        <select required th:field="*{product}" id="product">
+                                            <option th:each="product : ${productsList}" th:value="${product.id}"
+                                                th:text="${product.name}">Juego</option>
+                                        </select>
+                                    </div>
+                                    <!-- JUGADORES -->
+                                    <div class="overflow-auto">
+                                        <label>Jugadores: </label>
+                                        <div th:each="member : ${membersList}" >
+                                            <input th:field="*{players}" type="checkbox" class="playerInput"
+                                                th:value="${member.id}" th:text="${member.name + ' '+ member.lastName}">
+                                        </div>
+                                    </div>
+                                    <!-- FECHA 
 									<div class="d-flex">
 									<label for="gamedate">Fecha: </label>
 									<input type="datetime-local" th:field="*{date}" id="gamedate" >
-									</div>
-								</div>
-								<div class="d-flex justify-content-end">
-									<button type="submit" class="btn btn-primary">Agregar</button>
-								</div>
+									</div>-->
+                                    <div class="d-flex flex-column">
+                                        <div>
+                                            <label for="date">Fecha: </label>
+                                            <input type="date" th:field="*{date}" th:value="*{date}" id="dateSession"
+                                                required>
+                                        </div>
+                                        <div>
+                                            <label for="time">Hora: </label>
+                                            <input type="time" th:field="*{time}" th:value="*{time}" id="timeSession"
+                                                required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary">Agregar</button>
+                                </div>
 
-							</form>
+                            </form>
 
-						</div>
+                        </div>
 
-					</div>
+                    </div>
 
 
-				</div>
-				<!-- /FORM - MODAL -->
+                </div>
+                <!-- /FORM - MODAL -->
                 <footer class="row bg-dark text-white py-4 mt-auto">
 
                     <div class="container d-lg-flex align-items-center  justify-content-between">
@@ -204,7 +233,7 @@
                             </div>
                         </div>
                         <hr class="d-lg-none">
-                        <div class="row  ">
+                        <div class="row text-center ">
                             <div class="col-12 ">
                                 <h3>Nuestros colaboradores</h3>
 
@@ -230,7 +259,7 @@
 
                         </div>
                         <hr class="d-lg-none">
-                        <div class="row py-5 text-sm-center text-lg-left ">
+                        <div class="row py-5 text-center ">
                             <div class="col-12 col-lg-4">
                                 <h3>Nuestra comunidad </h3>
 
@@ -258,8 +287,8 @@
 
                     <div class="row text-sm-center text-lg-right">
                         <div class="col-8 col-lg-12">
-                            <p>Web propiedad de Manuel Expósito Herrera. MESAS ROLERAS© CIF N8349727A Los
-                                Salesianos Triana (San Pedro), Calle Condes de Bustillo, nº17 41019 SEVILLA</p>
+                            <p>Web propiedad de Manuel Expósito Herrera. MESAS ROLERAS© CIF A65754426 Los
+                                Salesianos Triana (San Pedro), Calle Condes de Bustillo, nº17 41010 SEVILLA</p>
 
                         </div>
                     </div>

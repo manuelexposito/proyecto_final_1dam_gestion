@@ -186,7 +186,9 @@
                                     aria-label="Close"></button>
                             </div>
 
-                            <form method="POST" th:action="@{/submit}" th:object="${member}" class="modal-body ">
+                            <form method="POST" th:action="@{/submit}" th:object="${member}" class="modal-body"  >
+                                
+                                <!-- FORM CONTENT-->
                                 <div class="d-flex">
                                     <!--FOTO-->
                                     <div class="card-body bg-gray">
@@ -227,8 +229,8 @@
                                                 <label for="dni" class="form-label ">DNI<span
                                                         class="text-danger ">*</span></label>
                                                 <input type="text" th:field="*{dni}" class="formStyle " name="dni"
-                                                    id="dni" maxlength="9 " size="9 " required
-                                                    placeholder="Num y letra">
+                                                    id="newDni" maxlength="9 " size="9 " required
+                                                    placeholder="Num y letra" >
                                             </div>
                                             <div class="d-flex flex-column">
                                                 <label for="address" class="form-label">Dirección<span
@@ -250,7 +252,7 @@
                                                 <label for="birthdate" class="form-label">Fecha de nacimiento<span
                                                         class="text-danger ">*</span></label>
                                                 <input type="date" th:field="*{birthdate}" th:value="*{birthdate}"
-                                                    name="birthdate" class="formStyle" id="birthdate" size="10"
+                                                    name="birthdate" class="formStyle" id="birthdate" size="10" min="1900-01-01"
                                                     required>
                                             </div>
                                             <div class="d-flex flex-column">
@@ -274,7 +276,7 @@
                                 <div class="d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">Agregar</button>
                                 </div>
-
+                                
                             </form>
 
                         </div>
@@ -308,7 +310,7 @@
                             </div>
                         </div>
                         <hr class="d-lg-none">
-                        <div class="row  ">
+                        <div class="row text-center  ">
                             <div class="col-12 ">
                                 <h3>Nuestros colaboradores</h3>
 
@@ -334,7 +336,7 @@
 
                         </div>
                         <hr class="d-lg-none">
-                        <div class="row py-5 text-sm-center text-lg-left ">
+                        <div class="row py-5 text-center ">
                             <div class="col-12 col-lg-4">
                                 <h3>Nuestra comunidad </h3>
 
@@ -363,8 +365,8 @@
 
                     <div class="row text-sm-center text-lg-right">
                         <div class="col-8 col-lg-12">
-                            <p>Web propiedad de Manuel Expósito Herrera. MESAS ROLERAS© CIF N8349727A Los
-                                Salesianos Triana (San Pedro), Calle Condes de Bustillo, nº17 41019 SEVILLA</p>
+                            <p>Web propiedad de Manuel Expósito Herrera. MESAS ROLERAS© CIF A65754426 Los
+                                Salesianos Triana (San Pedro), Calle Condes de Bustillo, nº17 41010 SEVILLA</p>
 
                         </div>
                     </div>
