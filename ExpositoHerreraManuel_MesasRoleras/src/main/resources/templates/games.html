@@ -118,7 +118,7 @@
 
                                 </div>
                             </div>
-                            <div class="container infoTable overflow-auto" >
+                            <div class="container infoTable overflow-auto">
 
                                 <div class="row">
 
@@ -137,7 +137,7 @@
                                             </div>
                                         </a>
                                     </div>
-                                   
+
 
                                 </div>
 
@@ -160,29 +160,23 @@
                             </div>
 
                             <form method="POST" th:action="@{/games/submit}" th:object="${game}" class="modal-body ">
-                                <div class="d-flex justify-content-between">
-                                    <!-- JUEGO -->
-                                    <div class="d-flex flex-column">
-                                        <label>Juego:</label>
-                                        <select required th:field="*{product}" id="product">
-                                            <option th:each="product : ${productsList}" th:value="${product.id}"
-                                                th:text="${product.name}">Juego</option>
-                                        </select>
-                                    </div>
-                                    <!-- JUGADORES -->
-                                    <div class="overflow-auto">
-                                        <label>Jugadores: </label>
-                                        <div th:each="member : ${membersList}" >
-                                            <input th:field="*{players}" type="checkbox" class="playerInput"
-                                                th:value="${member.id}" th:text="${member.name + ' '+ member.lastName}">
+                                <div class="container">
+                                    <div class="row d-flex justify-content-between">
+                                        <div class="col-lg-6 col-sm-12"> <label>Juego:</label>
+                                            <select required th:field="*{product}" id="product">
+                                                <option th:each="product : ${productsList}"  th:value="${product.id}"
+                                                    th:text="${product.name}">Juego</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-6 col-sm-12 "> <label>Jugadores: </label>
+                                            <div class="overflow-auto" th:each="member : ${membersList}">
+                                                <input th:field="*{players}" type="checkbox" class="playerInput"
+                                                    th:value="${member.id}"
+                                                    th:text="${member.name + ' '+ member.lastName}">
+                                            </div>
                                         </div>
                                     </div>
-                                    <!-- FECHA 
-									<div class="d-flex">
-									<label for="gamedate">Fecha: </label>
-									<input type="datetime-local" th:field="*{date}" id="gamedate" >
-									</div>-->
-                                    <div class="d-flex flex-column">
+                                    <div class="col-12 mt-4">
                                         <div>
                                             <label for="date">Fecha: </label>
                                             <input type="date" th:field="*{date}" th:value="*{date}" id="dateSession"
@@ -195,107 +189,108 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary">Agregar</button>
-                                </div>
-
-                            </form>
-
+                        
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary">Agregar</button>
                         </div>
 
-                    </div>
+                        </form>
 
+                    </div>
 
                 </div>
-                <!-- /FORM - MODAL -->
-                <footer class="row bg-dark text-white py-4 mt-auto">
 
-                    <div class="container d-lg-flex align-items-center  justify-content-between">
 
-                        <div class="row text-center ">
-                            <div class="col-12">
-                                <h3>Sobre nosotros</h3>
-                            </div>
-                            <div class="col-12">
-                                <a class="text-white" href="#">En qué destacamos</a>
-                            </div>
-                            <div class="col-12">
-                                <a class="text-white" href="#">Quiénes somos</a>
-                            </div>
-                            <div class="col-12">
-                                <a class="text-white" href="#">Dónde encontrarnos</a>
-                            </div>
-                            <div class="col-12">
-                                <a class="text-white" href="#">Trabaja con nosotros</a>
-                            </div>
-                            <div class="col-12">
-                                <a class="text-white" href="#">Aviso legal</a>
-                            </div>
-                        </div>
-                        <hr class="d-lg-none">
-                        <div class="row text-center ">
-                            <div class="col-12 ">
-                                <h3>Nuestros colaboradores</h3>
-
-                                <div class="row">
-                                    <div class="col-sm-12 col-lg-6">
-                                        <a href="https://company.wizards.com/es"><i
-                                                class="text-white collaboratorLogo fab fa-wizards-of-the-coast"></i></a>
-                                    </div>
-                                    <div class="col-sm-12 col-lg-6">
-                                        <a href="https://www.dndbeyond.com/"><i
-                                                class="text-white collaboratorLogo fab fa-d-and-d-beyond"></i></a>
-                                    </div>
-                                    <div class="col-sm-12 col-lg-6">
-                                        <a href="https://critrole.com/"><i
-                                                class="mb-3 text-white collaboratorLogo fab fa-critical-role"></i></a>
-                                    </div>
-                                    <div class="col-sm-12 col-lg-6">
-                                        <a href="https://www.fantasyflightgames.com/en/index/"><i
-                                                class="text-white collaboratorLogo fab fa-fantasy-flight-games"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <hr class="d-lg-none">
-                        <div class="row py-5 text-center ">
-                            <div class="col-12 col-lg-4">
-                                <h3>Nuestra comunidad </h3>
-
-                                <div class="row">
-                                    <div class="col-sm-12 col-lg-6">
-                                        <a class="text-decoration-none" href="https://twitter.com/"><i
-                                                class="text-white collaboratorLogo fab fa-twitter"></i></a>
-                                    </div>
-                                    <div class="col-sm-12 col-lg-6">
-                                        <a class="text-decoration-none" href="https://github.com/"><i
-                                                class="text-white collaboratorLogo fab fa-github"></i></a>
-                                    </div>
-                                    <div class="col-sm-12 col-lg-6">
-                                        <a class="text-decoration-none" href="https://www.reddit.com/"><i
-                                                class="text-white collaboratorLogo fab fa-reddit"></i></a>
-                                    </div>
-                                    <div class="col-sm-12 col-lg-6">
-                                        <a class="text-decoration-none" href="https://www.instagram.com/"><i
-                                                class="text-white collaboratorLogo fab fa-instagram"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row text-sm-center text-lg-right">
-                        <div class="col-8 col-lg-12">
-                            <p>Web propiedad de Manuel Expósito Herrera. MESAS ROLERAS© CIF A65754426 Los
-                                Salesianos Triana (San Pedro), Calle Condes de Bustillo, nº17 41010 SEVILLA</p>
-
-                        </div>
-                    </div>
-                </footer>
             </div>
+            <!-- /FORM - MODAL -->
+            <footer class="row bg-dark text-white py-4 mt-auto">
 
+                <div class="container d-lg-flex align-items-center  justify-content-between">
+
+                    <div class="row text-center ">
+                        <div class="col-12">
+                            <h3>Sobre nosotros</h3>
+                        </div>
+                        <div class="col-12">
+                            <a class="text-white" href="#">En qué destacamos</a>
+                        </div>
+                        <div class="col-12">
+                            <a class="text-white" href="#">Quiénes somos</a>
+                        </div>
+                        <div class="col-12">
+                            <a class="text-white" href="#">Dónde encontrarnos</a>
+                        </div>
+                        <div class="col-12">
+                            <a class="text-white" href="#">Trabaja con nosotros</a>
+                        </div>
+                        <div class="col-12">
+                            <a class="text-white" href="#">Aviso legal</a>
+                        </div>
+                    </div>
+                    <hr class="d-lg-none">
+                    <div class="row text-center ">
+                        <div class="col-12 ">
+                            <h3>Nuestros colaboradores</h3>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-6">
+                                    <a href="https://company.wizards.com/es"><i
+                                            class="text-white collaboratorLogo fab fa-wizards-of-the-coast"></i></a>
+                                </div>
+                                <div class="col-sm-12 col-lg-6">
+                                    <a href="https://www.dndbeyond.com/"><i
+                                            class="text-white collaboratorLogo fab fa-d-and-d-beyond"></i></a>
+                                </div>
+                                <div class="col-sm-12 col-lg-6">
+                                    <a href="https://critrole.com/"><i
+                                            class="mb-3 text-white collaboratorLogo fab fa-critical-role"></i></a>
+                                </div>
+                                <div class="col-sm-12 col-lg-6">
+                                    <a href="https://www.fantasyflightgames.com/en/index/"><i
+                                            class="text-white collaboratorLogo fab fa-fantasy-flight-games"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr class="d-lg-none">
+                    <div class="row py-5 text-center ">
+                        <div class="col-12 col-lg-4">
+                            <h3>Nuestra comunidad </h3>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-6">
+                                    <a class="text-decoration-none" href="https://twitter.com/"><i
+                                            class="text-white collaboratorLogo fab fa-twitter"></i></a>
+                                </div>
+                                <div class="col-sm-12 col-lg-6">
+                                    <a class="text-decoration-none" href="https://github.com/"><i
+                                            class="text-white collaboratorLogo fab fa-github"></i></a>
+                                </div>
+                                <div class="col-sm-12 col-lg-6">
+                                    <a class="text-decoration-none" href="https://www.reddit.com/"><i
+                                            class="text-white collaboratorLogo fab fa-reddit"></i></a>
+                                </div>
+                                <div class="col-sm-12 col-lg-6">
+                                    <a class="text-decoration-none" href="https://www.instagram.com/"><i
+                                            class="text-white collaboratorLogo fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row text-sm-center text-lg-right">
+                    <div class="col-8 col-lg-12">
+                        <p>Web propiedad de Manuel Expósito Herrera. MESAS ROLERAS© CIF A65754426 Los
+                            Salesianos Triana (San Pedro), Calle Condes de Bustillo, nº17 41010 SEVILLA</p>
+
+                    </div>
+                </div>
+            </footer>
         </div>
+
+    </div>
 
     </div>
     <!--JAVASCRIPT-->

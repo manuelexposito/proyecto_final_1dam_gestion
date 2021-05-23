@@ -115,7 +115,7 @@
                                             </div>
                                             <div class="d-flex align-items-center">
                                                 <label for="filterByPremium"> Mostrar todos </label>
-                                                <input type="radio" name="filterByPremium"
+                                                <input type="radio"  name="filterByPremium"
                                                     onchange="window.location.href = 'http://localhost:9000/'">
                                             </div>
 
@@ -145,8 +145,7 @@
                                             th:remove="all-but-first ">
 
 
-                                            <!-- <a th:href="@{/{id}(id=${member.id})}"> -->
-                                            <!-- data-th-href="@{/{id}}" -->
+                                            
                                             <tr class="clickable clickable-row"
                                                 th:onclick="'javascript:rowClicked(\'' + ${member.id} + '\')'">
 
@@ -186,97 +185,114 @@
                                     aria-label="Close"></button>
                             </div>
 
-                            <form method="POST" th:action="@{/submit}" th:object="${member}" class="modal-body"  >
-                                
+                            <form method="POST" th:action="@{/submit}" th:object="${member}" class="modal-body">
+
                                 <!-- FORM CONTENT-->
-                                <div class="d-flex">
-                                    <!--FOTO-->
-                                    <div class="card-body bg-gray">
-                                        <div class="d-flex flex-column">
-                                            <input type="text" th:field="*{image}" class="formStyle"
-                                                placeholder="Introduzca su URL...">
-                                            <label for="image">Imagen</label>
+                                <div class="container-fluid ">
+                                    <div class="row d-flex">
+                                        <!--FOTO-->
+                                        <div class="col-lg-4 col-sm-12 card-body bg-gray">
+                                            <div class="d-flex flex-column">
+                                                <input type="text" th:field="*{image}" class="formStyle"
+                                                    placeholder="Introduzca su URL...">
+                                                <label for="image">Imagen</label>
+                                            </div>
+                                        </div>
+                                        <!--INFO-->
+                                        <div class="col-lg-8 col-sm-12">
+                                            <div class="row mt-2">
+                                                <div class="col-lg-6 col-sm-12">
+                                                    <label for="name" class="form-label ">Nombre<span
+                                                            class="text-danger ">*</span></label>
+                                                    <input type="text" th:field="*{name}" name="name" class="formStyle "
+                                                        id="name" maxlength="220 " size="20 " placeholder="Nombre "
+                                                        required>
+                                                </div>
+
+
+                                                <div class="col-lg-6 col-sm-12">
+                                                    <label for="lastName" class="form-label ">Apellidos<span
+                                                            class="text-danger ">*</span></label>
+                                                    <input type="text" th:field="*{lastName}" name="lastName"
+                                                        class="formStyle " id="lastName" maxlength="220 " size="20 "
+                                                        placeholder="Los dos apellidos " required>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-2">
+                                                <div class="col-lg-6 col-sm-12">
+                                                    <label for="email" class="form-label ">Email<span
+                                                            class="text-danger ">*</span></label>
+                                                    <input type="email" th:field="*{email}" class="formStyle "
+                                                        id="email" size="15 " required>
+                                                </div>
+
+
+
+                                                <div class="col-lg-6 col-sm-12">
+                                                    <label for="dni" class="form-label ">DNI<span
+                                                            class="text-danger ">*</span></label>
+                                                    <input type="text" th:field="*{dni}" class="formStyle " name="dni"
+                                                        id="newDni" maxlength="9 " size="9 " required
+                                                        placeholder="Num y letra">
+                                                </div>
+                                            </div>
+                                            <div class="row mt-2">
+                                                <div class="col-lg-6 col-sm-12 ">
+                                                    <label for="phone" class="form-label">Teléfono</label>
+                                                    <input type="text" th:field="*{phone}" name="phone"
+                                                        class="formStyle" id="phone" max="12" size="12"
+                                                        placeholder="+34...">
+                                                </div>
+
+
+                                                <div class="col-lg-6 col-sm-12 d-flex align-items-center">
+                                                    <label for="birthdate" class="form-label">Fecha de nacimiento<span
+                                                            class="text-danger ">*</span></label>
+                                                    <input type="date" th:field="*{birthdate}" th:value="*{birthdate}"
+                                                        name="birthdate" class="formStyle" id="birthdate" size="10"
+                                                        min="1900-01-01" required>
+                                                </div>
+
+
+                                                
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-sm-12 d-flex align-items-center">
+                                                    <label for="address" class="form-label">Dirección<span
+                                                            class="text-danger ">*</span></label>
+                                                    <input type="text" th:field="*{address}" name="address"
+                                                        class="formStyle" id="address" maxlength="220" size="25"
+                                                        placeholder="Calle Betis..." required>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12 d-flex align-items-center">
+                                                    <label for="bankNum" class="form-label">IBAN<span
+                                                            class="text-danger ">*</span></label>
+                                                    <input type="text" th:field="*{bankNum}" name="bankNum"
+                                                        class="formStyle" id="bankNum" min='1990-01-01' maxlength="220"
+                                                        size="25" required>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="mt-3 ">
+                                                    
+                                                    <label for="isPremium" th:field="*{isPremium}"
+                                                        class="form-label">Miembro
+                                                        Premium</label><br>
+                                                    <input type="radio" value=true name="isPremium"
+                                                        id="premiumTrue">Sí<br>
+                                                    <input type="radio" value=false name="isPremium" id="premiumFalse"
+                                                        checked>No
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <br>
-                                    <!--INFO-->
-                                    <div class="infoForm">
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <div>
-                                                <label for="name" class="form-label ">Nombre<span
-                                                        class="text-danger ">*</span></label>
-                                                <input type="text" th:field="*{name}" name="name" class="formStyle "
-                                                    id="name" maxlength="220 " size="20 " placeholder="Nombre "
-                                                    required>
-                                            </div>
-                                            <div>
-                                                <label for="lastName" class="form-label ">Apellidos<span
-                                                        class="text-danger ">*</span></label>
-                                                <input type="text" th:field="*{lastName}" name="lastName"
-                                                    class="formStyle " id="lastName" maxlength="220 " size="20 "
-                                                    placeholder="Los dos apellidos " required>
-                                            </div>
-                                            <div>
-                                                <label for="email" class="form-label ">Email<span
-                                                        class="text-danger ">*</span></label>
-                                                <input type="email" th:field="*{email}" class="formStyle " id="email"
-                                                    size="40 " required>
-                                            </div>
-                                        </div>
-                                        <div class="mt-3 d-flex justify-content-between ">
-
-                                            <div class="d-flex flex-column">
-                                                <label for="dni" class="form-label ">DNI<span
-                                                        class="text-danger ">*</span></label>
-                                                <input type="text" th:field="*{dni}" class="formStyle " name="dni"
-                                                    id="newDni" maxlength="9 " size="9 " required
-                                                    placeholder="Num y letra" >
-                                            </div>
-                                            <div class="d-flex flex-column">
-                                                <label for="address" class="form-label">Dirección<span
-                                                        class="text-danger ">*</span></label>
-                                                <input type="text" th:field="*{address}" name="address"
-                                                    class="formStyle" id="address" maxlength="220" size="40"
-                                                    placeholder="C/ Triana..." required>
-                                            </div>
-                                            <div class="d-flex flex-column">
-                                                <label for="phone" class="form-label">Teléfono</label>
-                                                <input type="text" th:field="*{phone}" name="phone" class="formStyle"
-                                                    id="phone" max="12" size="12" placeholder="+34...">
-                                            </div>
-
-                                        </div>
-
-                                        <div class="mt-3 d-flex justify-content-between ">
-                                            <div class="d-flex flex-column">
-                                                <label for="birthdate" class="form-label">Fecha de nacimiento<span
-                                                        class="text-danger ">*</span></label>
-                                                <input type="date" th:field="*{birthdate}" th:value="*{birthdate}"
-                                                    name="birthdate" class="formStyle" id="birthdate" size="10" min="1900-01-01"
-                                                    required>
-                                            </div>
-                                            <div class="d-flex flex-column">
-                                                <label for="bankNum" class="form-label">Número de cuenta<span
-                                                        class="text-danger ">*</span></label>
-                                                <input type="text" th:field="*{bankNum}" name="bankNum"
-                                                    class="formStyle" id="bankNum" min='1990-01-01' maxlength="220"
-                                                    size="40" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="mt-3">
-                                            <label for="isPremium" th:field="*{isPremium}" class="form-label">Miembro
-                                                Premium</label><br>
-                                            <input type="radio" value=true name="isPremium" id="premiumTrue">Sí<br>
-                                            <input type="radio" value=false name="isPremium" id="premiumFalse"
-                                                checked>No
-                                        </div>
-                                    </div>
+                                    
                                 </div>
+                                <hr>
                                 <div class="d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">Agregar</button>
                                 </div>
-                                
+                                <!-- / FORM CONTENT-->
                             </form>
 
                         </div>
@@ -354,8 +370,7 @@
                                                 class="text-white collaboratorLogo fab fa-reddit"></i></a>
                                     </div>
                                     <div class="col-sm-12 col-lg-6">
-                                        <a class="text-decoration-none"
-                                            href="https://www.instagram.com/"><i
+                                        <a class="text-decoration-none" href="https://www.instagram.com/"><i
                                                 class="text-white collaboratorLogo fab fa-instagram"></i></a>
                                     </div>
                                 </div>
